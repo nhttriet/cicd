@@ -1,0 +1,41 @@
+<html>
+<body>
+<style>
+h3,h5 {
+color:rgb(192,0,0)
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+</style>
+<h3 style="text-align: center">THIS IS JENKINS MAIL NOTIFICATION</h3>
+
+<p>Enviroment: <span style="color:rgb(192,0,0)">CICD NGUYEN HUYNH THANH TRIET</span></p>
+
+<p>Project Name: <span style="color:rgb(192,0,0)">$PROJECT_NAME</span></p>
+
+<p>Build Status: <span style="color:rgb(192,0,0)">$BUILD_STATUS</span></p>
+
+<p>Date and Time: <span>$BUILD_TIMESTAMP</span></p>
+
+<h3>Please review your change below:</h3>
+<table style="width:100%">
+  <tr>
+    <td style="text-align: center">$JOB_NAME </td>
+    <td><pre>${FILE, path="/var/lib/jenkins/workspace/CICD/cicd.txt"}</pre></td>
+  </tr>
+</table>
+
+<p><a href="http://178.128.80.77:8080/job/$PROJECT_NAME"><b>CLICK HERE!</b></a> to check console output.</p>
+
+<p><b>DON'T REPLY THIS EMAIL!</b></p>
+
+<p>Contact for support: <a href = "mailto:trietpl1999@gmail.com">trietpl1999@gmail.com</a></p>
+
+<p>Thanks team!!!</p>
+</body>
+</html>
