@@ -26,12 +26,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		    <dependency>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>sonar-maven-plugin</artifactId>
-			<version>3.4.0.905</version>
-			<type>pom</type>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -52,23 +47,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	  <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url> http://localhost:9000 </sonar.host.url>
 	
- <sonar.host.url> http://localhost:9000 </sonar.host.url>
-	
-
-<sonar.jdbc.username>admin</sonar.jdbc.username>
-<sonar.jdbc.password>P@ssword</sonar.jdbc.password>               
-
-            </properties>
-        </profile>
-     </profiles>
 </project>
