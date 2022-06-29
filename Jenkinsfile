@@ -43,7 +43,7 @@ pipeline{
             steps{
                 sh '''cd $WORKSPACE
                 pwd
-                sudo cp -rf $WORKSPACE/src/main/resources/static/* /var/www/html/triet.com/ 
+                cp -rf $WORKSPACE/src/main/resources/static/* /var/www/html/triet.com/ 
                 #sudo cp -rf $WORKSPACE/src/main/resources/static/index_files /var/www/html/triet.com/
                 sudo docker restart httpd 
                 sh /home/triet/start_email.sh
