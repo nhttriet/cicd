@@ -4,6 +4,10 @@ pipeline{
         PATH = "$PATH:/opt/maven/bin"
         report = '$WORKSPACE/Email/email-template.html'
     }
+    tools {
+        maven "mvn"
+        
+    }
     stages
     {
        stage('GetCode'){
