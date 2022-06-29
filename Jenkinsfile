@@ -14,6 +14,7 @@ pipeline{
             steps{
                 git 'https://github.com/Yileu/cicd.git'
                 sh 'mvn --version'
+                sh 'java -version'
             }
          }        
        stage('Build'){
