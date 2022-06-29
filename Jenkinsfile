@@ -27,7 +27,7 @@ pipeline{
         stage('SonarQube analysis') {
         steps{
         withSonarQubeEnv('sonarqube-9.4') { 
-        sh "sudo mvn sonar:sonar"
+        sh "mvn sonar:sonar"
     }
         }
         }
@@ -45,7 +45,7 @@ pipeline{
                 pwd
                 cp -rf $WORKSPACE/src/main/resources/static/* /var/www/html/triet.com/ 
                 #sudo cp -rf $WORKSPACE/src/main/resources/static/index_files /var/www/html/triet.com/
-                sudo docker restart httpd 
+                docker restart httpd 
                 sh /home/triet/start_email.sh
                 '''
             }
