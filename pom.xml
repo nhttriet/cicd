@@ -8,17 +8,20 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>cicd</artifactId>
-<!-- 	<version>0.0.1-SNAPSHOT</version> -->
-	<version>0.0.1</version>
-	<packaging>war</packaging>
+	 <groupId>org.sonarsource.scanner.maven</groupId>
+	  <artifactId>sonar-maven-plugin</artifactId>
+	  <version>3.10-SNAPSHOT</version>
+	  <packaging>maven-plugin</packaging>
+
 	<name>cicd</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 <!-- 		<sonar.sources>pom.xml,src/**</sonar.sources> -->
-		<sonar.sources>pom.xml,**</sonar.sources>
+<!-- 		<sonar.sources>pom.xml,**</sonar.sources> -->
+		 <mojo.java.target>1.7</mojo.java.target>
+		    <sonar.exclusions>src/main/java/org/apache/maven/shared/dependency/tree/DependencyTreeResolutionListener.java,target/generated-sources/**/*</sonar.exclusions>
+		    <gitRepositoryName>sonar-scanner-maven</gitRepositoryName>
 	</properties>
 	<dependencies>
 		<dependency>
