@@ -36,7 +36,7 @@ pipeline{
             steps{
         timeout(time: 1, unit: 'HOURS') {
             waitForQualityGate abortPipeline: true
-            echo "Test result is ${waitForQualityGate} ${abortPipeline}"
+            echo "Test result is ${qualityGate.status}"
         }
                 
             }
