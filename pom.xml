@@ -16,7 +16,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<sonar.sources>pom.xml,src/**</sonar.sources>
+<!-- 		<sonar.sources>pom.xml,src/**</sonar.sources> -->
 	</properties>
 	<dependencies>
 		<dependency>
