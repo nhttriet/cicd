@@ -12,7 +12,7 @@ pipeline{
     {
        stage('GetCode'){
             steps{
-                git 'https://github.com/Yileu/cicd.git'
+                git branch: 'RL1.0', credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git'
                 sh 'mvn --version'
                 sh 'java -version'
             }
