@@ -37,9 +37,6 @@ pipeline{
         timeout(time: 1, unit: 'HOURS') {
             waitForQualityGate abortPipeline: true
         }
-                error "Test result is ${qualityGate.status}" 
-                error "Test result1 is ${waitForQualityGate}"
-                error "Test result2 is ${abortPipeline}"
             }
   }      
 //         stage("Quality Gate"){
