@@ -33,26 +33,27 @@ pipeline{
     }
         }
         }
-//         stage("Quality Gate") {
-//             steps{
-//         timeout(time: 1, unit: 'HOURS') {
-//             waitForQualityGate abortPipeline: true
-//         }
-//             }
-//   }      
-        stage("Quality Gate"){
+        stage("Quality Gate") {
             steps{
-                scripts {
-                    timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                      
-            }             
-            }    
-                 
-          }
-            if (qg.status != 'OK') {
-                          error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                      }
+        timeout(time: 1, unit: 'HOURS') {
+            waitForQualityGate abortPipeline: true
         }
+                 echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+            }
+  }      
+//         stage("Quality Gate"){
+//             steps{
+//                 scripts {
+//                     timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                      
+//             }             
+//             }    
+                 
+//           }
+//             if (qg.status != 'OK') {
+//                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
+//                       }
+//         }
        stage('Deploy'){
             steps{
                 sh '''cd $WORKSPACE
