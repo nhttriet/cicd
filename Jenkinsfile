@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        PATH = "$PATH:/opt/maven/bin"
+//         PATH = "$PATH:/opt/maven/bin"
         report = '$WORKSPACE/Email/email-template.html'
 //         def qg = waitForQualityGate() 
     }
