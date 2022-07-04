@@ -30,6 +30,7 @@ pipeline{
         withSonarQubeEnv('sonarqube-9.4') { 
 //         sh "mvn sonar:sonar"
         sh "mvn properties:read-project-properties sonar:sonar"
+           echo "Pipeline aborted due to quality gate failure: ${qg.status}"
     }
         }
         }
@@ -38,7 +39,6 @@ pipeline{
         timeout(time: 1, unit: 'HOURS') {
             waitForQualityGate abortPipeline: true
         }
-                 echo "Pipeline aborted due to quality gate failure: ${qg.status}"
             }
   }      
 //         stage("Quality Gate"){
