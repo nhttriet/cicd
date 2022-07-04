@@ -3,7 +3,7 @@ pipeline{
     environment {
         PATH = "$PATH:/opt/maven/bin"
         report = '$WORKSPACE/Email/email-template.html'
-        def qg = waitForQualityGate() 
+//         def qg = waitForQualityGate() 
     }
     tools {
         maven "mvn"
@@ -30,7 +30,7 @@ pipeline{
         withSonarQubeEnv('sonarqube-9.4') { 
 //         sh "mvn sonar:sonar"
         sh "mvn properties:read-project-properties sonar:sonar"
-           echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+//            echo "Pipeline aborted due to quality gate failure: ${qg.status}"
     }
         }
         }
