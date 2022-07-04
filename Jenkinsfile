@@ -45,11 +45,11 @@ pipeline{
                 scripts {
                     timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
                       
-            }
-                    if (qg.status != 'OK') {
+            }             
+            }    
+                 if (qg.status != 'OK') {
                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
-            }             
           }
         }
        stage('Deploy'){
