@@ -50,6 +50,7 @@ pipeline{
             }
             }             
           }
+        }
        stage('Deploy'){
             steps{
                 sh '''cd $WORKSPACE
