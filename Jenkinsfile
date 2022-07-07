@@ -1,9 +1,7 @@
 pipeline{
     agent any
     environment {
-//         PATH = "$PATH:/opt/maven/bin"
         report = '$WORKSPACE/Email/email-template.html'
-//         def qg = waitForQualityGate() 
     }
     tools {
         maven "mvn"
@@ -13,14 +11,11 @@ pipeline{
     {
        stage('GetCode'){
             steps{
-                git branch: 'RL1.0', credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git'
-                sh 'mvn --version'
-                sh 'java -version'
+                checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git']]])
             }
          }        
        stage('Build'){
             steps{
-                sh 'mvn clean package'
                 sh 'mvn clean install'
     
             }
@@ -28,9 +23,7 @@ pipeline{
         stage('SonarQube analysis') {
         steps{
         withSonarQubeEnv('sonarqube-9.4') { 
-//         sh "mvn sonar:sonar"
-        sh "mvn properties:read-project-properties sonar:sonar"
-//            echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+        sh "mvn sonar:sonar"
     }
         }
         }
@@ -40,24 +33,10 @@ pipeline{
             waitForQualityGate abortPipeline: true
         }
             }
-  }      
-//         stage("Quality Gate"){
-//             steps{
-//                 scripts {
-//                     timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                      
-//             }             
-//             }    
-                 
-//           }
-//             if (qg.status != 'OK') {
-//                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
-//                       }
-//         }
+      }      
        stage('Deploy'){
             steps{
                 sh '''cd $WORKSPACE
-                pwd
                 sudo cp -rf $WORKSPACE/src/main/resources/* /var/www/html/triet.com/ 
                 docker restart httpd 
                 sh /home/triet/start_email.sh
