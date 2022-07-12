@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        report = '/var/lib/jenkins/workspace/Email/email-template.html'
+        report = '/var/lib/jenkins/workspace/CICD/Email/email-template.html'
     }
     tools {
         maven "mvn"
