@@ -77,18 +77,15 @@ always{
 
 emailext attachLog: true, body: '''
 
+Enviroment: CICD NGUYEN HUYNH THANH TRIET
 
+Project Name: $PROJECT_NAME
 
-Environment Details:
+Build Status: $BUILD_STATUS
+  
+Test Status:${qg.status}
 
-
-
-Reg Demo22.2 integral-RestServices
-
-
-Build No: $BUILD_NUMBER
-
-Status: $BUILD_STATUS!
+Date and Time: $BUILD_TIMESTAMP
 
 
 
@@ -96,11 +93,11 @@ Regards,
 
 
 
-DevOps Team''', subject: '$PROJECT_NAME-#$BUILD_NUMBER-$BUILD_STATUS!', to: 'trietpl1999@gmail.com'
+DevOps Team''', 
+subject: '$PROJECT_NAME-#$BUILD_NUMBER-$BUILD_STATUS!', 
+to: 'trietpl1999@gmail.com'
 
 
-
-cleanWs()
 
 }
 
