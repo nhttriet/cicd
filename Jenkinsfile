@@ -83,8 +83,6 @@ Project Name: $PROJECT_NAME
 
 Build Status: $BUILD_STATUS
   
-Test Status:${qg.status}
-
 Date and Time: $BUILD_TIMESTAMP
 
 
