@@ -48,15 +48,7 @@ pipeline{
                 }
             }
         }
-            stages {
-        stage('Build') {
-            steps {
-                echo "BUILD_STATUS is ${BUILD_STATUS}"
-                sh 'printenv'
-            }
-        }
-    }
-
+           
        stage('Deploy'){
             steps{
                 sh '''cd $WORKSPACE
