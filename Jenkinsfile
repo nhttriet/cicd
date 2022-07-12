@@ -62,7 +62,10 @@ pipeline{
        always {
             script {
                 html_body = sh(script: "cat ${report}", returnStdout: true).trim()
-                emailext body: "$html_body", 
+                emailext body: '''
+                var: ${var}
+                envvar: ${env.VAR}
+                $html_body''', 
                 subject: '$PROJECT_NAME - Build#$BUILD_NUMBER - $BUILD_STATUS!', 
                 to: 'trietpl1999@gmail.com',
                 mimeType: 'text/html'
