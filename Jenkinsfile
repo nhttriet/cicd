@@ -11,7 +11,8 @@ pipeline{
     {
        stage('GetCode'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Yileu/cicd.git']]])
+//                 checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git']]])
             }
          }        
        stage('Build'){
