@@ -59,47 +59,18 @@ pipeline{
             }
          }
     }
-    // post {
-    // //    always {
-    // //         script {
-    // //             html_body = sh(script: "cat ${report}", returnStdout: true).trim()
+    post {
+       always {
+            script {
+                html_body = sh(script: "cat ${report}", returnStdout: true).trim()
 
-    // //             emailext body: "$html_body", 
-    // //             subject: '$PROJECT_NAME - Build#$BUILD_NUMBER - $BUILD_STATUS!', 
-    // //             to: 'trietpl1999@gmail.com',
-    // //             mimeType: 'text/html'
-    // //         }
-    // //    }
-    // }
-    post{
-
-always{
-
-emailext attachLog: true, body: '''
-
-Enviroment: CICD NGUYEN HUYNH THANH TRIET
-
-Project Name: $PROJECT_NAME
-
-Build Status: $BUILD_STATUS
-  
-Date and Time: $BUILD_TIMESTAMP
-
-
-
-Regards,
-
-
-
-DevOps Team''', 
-subject: '$PROJECT_NAME-#$BUILD_NUMBER-$BUILD_STATUS!', 
-to: 'trietpl1999@gmail.com'
-
-
-
-}
-
-}
-
+                emailext body: "$html_body", 
+                subject: '$PROJECT_NAME - Build#$BUILD_NUMBER - $BUILD_STATUS!', 
+                to: 'trietpl1999@gmail.com',
+                mimeType: 'text/html'
+            }
+       }
+    }
+    
 
 }
