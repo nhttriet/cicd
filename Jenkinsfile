@@ -30,7 +30,7 @@ pipeline{
         }
 //         stage("Quality Gate") {
 //             steps{
-//         timeout(time: 2, unit: 'HOURS') {
+//         timeout(time: 1, unit: 'HOURS') {
 //             waitForQualityGate abortPipeline: true
 //         }
 //             }
@@ -65,7 +65,8 @@ pipeline{
                 html_body = sh(script: "cat ${report}", returnStdout: true).trim()
 //                 def envEnviron = it.getAction("org.jenkinsci.plugins.workflow.cps.EnvActionImpl").getEnvironment()
 //                  println(envEnviron)
-                emailext body: "$html_body", 
+                // emailext body: "$html_body", 
+                body: '${FILE,path="/var/lib/jenkins/workspace/CICD/Email/email-template.html"}',
                 subject: '$PROJECT_NAME - Build#$BUILD_NUMBER - $BUILD_STATUS!', 
                 to: 'trietpl1999@gmail.com',
                 mimeType: 'text/html'
