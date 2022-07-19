@@ -41,6 +41,7 @@ pipeline{
                 script {
                     timeout(time: 1, unit: 'HOURS') {
                         def qg = waitForQualityGate()
+                        env.result=qg.status
                         if (qg.status != 'OK') {
                             error "Pipeline aborted due to quality gate failure: ${qg.status}"
                         }
@@ -63,7 +64,7 @@ pipeline{
        always {
             script {
                 html_body = sh(script: "cat ${report}", returnStdout: true).trim()
-                echo ${qg.status}
+                echo $result
                 emailext body: "$html_body", 
                 subject: '$PROJECT_NAME - Build#$BUILD_NUMBER - $BUILD_STATUS!', 
                 to: 'trietpl1999@gmail.com',
