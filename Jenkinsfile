@@ -14,17 +14,7 @@ pipeline{
                 checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Yileu/cicd.git']]])
 //                 checkout([$class: 'GitSCM', branches: [[name: '*/RL1.0']], extensions: [], userRemoteConfigs: [[credentialsId: 'Git_Yileu', url: 'https://github.com/Yileu/cicd.git']]])
             }
-         } 
-         stage('Naming')
-            {
-            steps{
-                script{
-                V=VersionNumber projectStartDate: '', versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH,XX}.${BUILD_DAY,XX}.${BUILDS_TODAY}', versionPrefix: "${Version}-", worstResultForIncrement: 'SUCCESS'
-                currentBuild.displayName = "${V}"
-                echo = "${V}"
-                }
-            }
-            }       
+         }    
        stage('Build'){
             steps{
                 sh 'mvn clean install'
